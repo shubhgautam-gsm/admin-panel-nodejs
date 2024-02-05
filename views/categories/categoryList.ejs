@@ -1,0 +1,27 @@
+    <div class="container mt-5">
+        <h1 class="mb-4">Category list</h1>
+        <!-- Table for Product List -->
+        <h2>Product List</h2>
+            <% categories.forEach(function(category) { %>
+                <div class="col-md-4">
+                    <div class="card" style="margin: 20px 0 24px 0; width: 100%;">
+                        <div class="card-body">
+                            <!-- <form action="/categories/<%= category._id %>?_method=PUT" method="post">
+                                <label for="cat_name">Category Name:</label>
+                                <input type="text" id="cat_name" name="cat_name" value="<%= category.cat_name %>" required>
+                                <button class="btn  btn-warning"  type="submit" >edit</button>
+                            </form> -->
+                            <form action="/category-edit/<%= category._id %>" method="post">
+                                <label for="cat_name">Category Name:</label>
+                                <input type="text" id="cat_name" name="cat_name" value="<%= category.cat_name %>" required>
+                                <button class="btn  btn-warning"  type="submit" >edit</button>
+                            </form>
+                            <form action="/category-delete/<%= category._id %>" method="post">
+                                <button class="btn btn-danger" type="submit">delete</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <% }); %>
+        </div>
+    </div>

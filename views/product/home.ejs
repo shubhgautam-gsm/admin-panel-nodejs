@@ -1,0 +1,41 @@
+<div class="container mt-5">
+    <h1 class="mb-4">Product Management</h1>
+<div class="display d-flex">
+    <form action="/productForm" method="get" ><button class="btn btn-secondary " type="submit">create-product</button></form>
+    <form action="/categoryForm" method="get"  ><button class="btn btn-secondary " type="submit">create-category</button></form>
+</div>
+    <!-- Form for Creating a Product -->
+
+    <!-- Table for Product List -->
+    <h2>Product List</h2>
+    <div id="productList" class="row">
+
+        <% products.forEach(function(product) { %>
+            <div class="col-md-4">
+                <div class="card" style="margin: 20px 0 24px 0; width: 100%;">
+                    <img class="card-img-top" src="<%= splitStr(product.imageURL) %>" alt="<%= product.imageURL %>"
+                        style="width: 100%;">
+                    <div class="card-body">
+
+                        <h4 class="card-title">
+                            <%= product.name %>
+                        </h4>
+                        <h2 class="card-text text-warning">
+                            <%= product.description %>
+                        </h2>
+                        <h2 class="card-text">
+                            <%= product.price %>
+                        </h2>
+                        <!-- Add Edit and Delete buttons with onclick events -->
+                        <form action="/edit-product/<%= product.id %>" method="post">
+                            <button class="btn btn-warning" type="submit">Edit</button>
+                        </form>
+                        <form action="/delete-product/<%= product.id %>" method="post">
+                            <button class="btn btn-danger" type="submit">delete</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <% }); %>
+    </div>
+</div>
